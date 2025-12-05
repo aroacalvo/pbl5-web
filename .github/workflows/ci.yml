@@ -26,7 +26,7 @@ jobs:
         projectBaseDir: .
         args: >
           -Dsonar.organization=pbl5
-          -Dsonar.projectKey=pbl5-web
+          -Dsonar.projectKey=aroacalvo_pbl5-web
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
