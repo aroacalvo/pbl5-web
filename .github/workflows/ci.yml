@@ -1,4 +1,4 @@
-name: CI/CD workflow for Maven Build and Sonar Code scan
+name: CI/CD workflow for Maven Build and SonarCloud Scan
 
 on:
   pull_request:
@@ -24,24 +24,17 @@ jobs:
           java-version: '17'
           cache: 'maven'
 
-      - name: Build with Maven
+      - name: Build and SonarCloud Analysis
         working-directory: ./crud_rest_db
-        run: mvn -B clean verify
-
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        with:
-          projectBaseDir: ./crud_rest_db
-          args: >
-            -Dsonar.organization=pbl5
-            -Dsonar.projectKey=aroacalvo_pbl5-web
-            -Dsonar.java.binaries=target/classes
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - name: SonarCloud Quality Gate
-        uses: sonarsource/sonarcloud-quality-gate-action@v1
-        timeout-minutes: 5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          mvn clean verify sonar:sonar \
+            -Dsonar.projectKey=aroacalvo_pbl5-web \
+            -Dsonar.organization=pbl5 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN \
+            -Dsonar.qualitygate.wait=true \
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+            -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+            -Dsonar.pullrequest.base=${{ github.base_ref }}
