@@ -1,0 +1,22 @@
+
+H__sonar_lambda_9$edu.mondragon.we2.pinkAlert.controller.DoctorController“
+ˆC:/Users/aritx/OneDrive/Desktop/Uni/PBL/pbl5-web/crud_rest_db/src/main/java/edu/mondragon/we2/pinkAlert/controller/DoctorController.java7 7(3"1*ƒ
+17 7(‚ÿ
+7 7(+0
+%11)edu.mondragon.we2.pinkAlert.model.Patient"cedu.mondragon.we2.pinkAlert.model.Diagnosis#getPatient()Ledu/mondragon/we2/pinkAlert/model/Patient;*N
+
+__unknown_file (2
+0
+d+edu.mondragon.we2.pinkAlert.model.Diagnosis2getPatient()ÆÃ
+7 7(3
+%12java.lang.Integer"Dedu.mondragon.we2.pinkAlert.model.Patient#getId()Ljava/lang/Integer;*N
+
+__unknown_file (2
+0
+%11)edu.mondragon.we2.pinkAlert.model.Patient2getId()"&
+7 7(3
+
+%12java.lang.Integer:<
+7 7(0
+d+edu.mondragon.we2.pinkAlert.model.DiagnosisB
+java.util.function.Function

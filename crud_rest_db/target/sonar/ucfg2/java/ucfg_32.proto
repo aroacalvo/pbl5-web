@@ -1,0 +1,39 @@
+
+E__sonar_lambda_7$edu.mondragon.we2.pinkAlert.service.DiagnosisServiceê
+ÖC:/Users/aritx/OneDrive/Desktop/Uni/PBL/pbl5-web/crud_rest_db/src/main/java/edu/mondragon/we2/pinkAlert/service/DiagnosisService.java] ](a"startingBlock*…
+startingBlock] ](a®
+•
+
+__unknown_file (
+	patientIdjava.lang.Integer"__id*c
+
+__unknown_file (G*E6
+4edu.mondragon.we2.pinkAlert.service.DiagnosisService"
+	patientId*
+1*ﬂ
+1]8 ](Tä
+á
+]8 ](`
+%10java.lang.String"__concat**
+]8 ](T
+Patient not found with id *,
+]W ](` 
+
+	patientIdjava.lang.IntegerKI
+]' ](7!
+%11java.lang.RuntimeException"java.lang.RuntimeExceptionƒ
+¡
+]# ](a
+%12"6java.lang.RuntimeException#<init>(Ljava/lang/String;)V*?
+
+__unknown_file (#
+!
+%11java.lang.RuntimeException*5
+
+__unknown_file (
+
+%10java.lang.String"/
+]# ](a#
+!
+%11java.lang.RuntimeExceptionB
+java.util.function.Supplier

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">crud_rest_db</a> &gt; <a href="index.source.html" class="el_package">edu.mondragon.we2.pinkAlert.service</a> &gt; <span class="el_source">PatientService.java</span></div><h1>PatientService.java</h1><pre class="source lang-java linenums">package edu.mondragon.we2.pinkAlert.service;
+
+import edu.mondragon.we2.pinkAlert.model.Patient;
+import edu.mondragon.we2.pinkAlert.repository.PatientRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PatientService {
+
+    private final PatientRepository patientRepository;
+
+<span class="fc" id="L14">    public PatientService(PatientRepository patientRepository) {</span>
+<span class="fc" id="L15">        this.patientRepository = patientRepository;</span>
+<span class="fc" id="L16">    }</span>
+
+    public List&lt;Patient&gt; findAll() {
+<span class="fc" id="L19">        return patientRepository.findAll();</span>
+    }
+
+    public Patient findById(Integer id) {
+<span class="fc" id="L23">        return patientRepository.findById(id)</span>
+<span class="fc" id="L24">                .orElseThrow(() -&gt; new RuntimeException(&quot;Patient not found with id &quot; + id));</span>
+    }
+
+    public Patient create(Patient patient) {
+<span class="fc" id="L28">        patient.setId(null);</span>
+<span class="fc" id="L29">        return patientRepository.save(patient);</span>
+    }
+
+    public Patient update(Integer id, Patient updated) {
+<span class="fc" id="L33">        Patient existing = findById(id);</span>
+<span class="fc" id="L34">        existing.setName(updated.getName());</span>
+<span class="fc" id="L35">        existing.setBirthDate(updated.getBirthDate());</span>
+<span class="fc" id="L36">        return patientRepository.save(existing);</span>
+    }
+
+    public void delete(Integer id) {
+<span class="fc" id="L40">        patientRepository.deleteById(id);</span>
+<span class="fc" id="L41">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
