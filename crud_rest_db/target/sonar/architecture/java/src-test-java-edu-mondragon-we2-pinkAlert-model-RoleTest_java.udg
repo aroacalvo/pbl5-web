@@ -1,236 +1,0 @@
-
-1.0aroacalvo_pbl5-webJavaFrontend"1765797938389*java2.B²
-B
-=src/test/java/edu/mondragon/we2/pinkAlert/model/RoleTest.java2
-	
-type3
-	
-TEST4
-
-
-module-key5
-
-aroacalvo_pbl5-web6
-
-package8
-9
-4aroacalvo_pbl5-web:edu.mondragon.we2.pinkAlert.model9
-0
-*edu.mondragon.we2.pinkAlert.model.RoleTest11
-
-class12
-
-access13
-
-	protected14
-
-
-full-range15
-
-(7:1)-(15:2)16
-
-simple-name17
-
-RoleTest18
-B
-<edu.mondragon.we2.pinkAlert.model.RoleTest#testEnumValues()V20
-
-method21
-
-(9:5)-(14:6)22
-
-testEnumValues23
- 
-org.junit.jupiter.api.Test25
-
-unknown26
-
-annotated by27
-
-
-uses28
-&
- org.junit.jupiter.api.Assertions30
-
-
-references31
-Z
-Torg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Object;Ljava/lang/Object;)V33
-
-calls34
-,
-&edu.mondragon.we2.pinkAlert.model.Role36
-3
--edu.mondragon.we2.pinkAlert.model.Role.DOCTOR38
-
-returns39
-p
-jedu.mondragon.we2.pinkAlert.model.Role#valueOf(Ljava/lang/String;)Ledu/mondragon/we2/pinkAlert/model/Role;41
-4
-.edu.mondragon.we2.pinkAlert.model.Role.PATIENT43
-2
-,edu.mondragon.we2.pinkAlert.model.Role.ADMIN45J#
-!
-1
-12
-
-3
-4
-
-5
-6Z
-
-7
-7982
-
-
-5
-6j¼
-
-24
-242526
-
-37
-373826
-
-32
-323326
-
-35
-353626
-
-40
-404126
-
-44
-444526
-N
-19H
-192021 *
-1
-
- 
-(210:7B$
-
-
-13
-14
-
-
-15
-22
-
-
-17
-23
-
-29
-293026
-
-42
-424326
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18r
-
-192427*
-1	 	(
-
-
-192428*
-1	 	(
-
-
-192931*
-1	 (
-
-193234*
-1	 (
-
-193528*
-1 (
-
-193528*
-1 (!
-
-193731*
-1 (!
-
-193539*
-1# (/
-
-193531*
-1# (/
-
-194034*
-1( (/
-
-193528*
-1# ('
-
-192931*
-1	 (
-
-193234*
-1	 (
-
-193528*
-1 (
-
-193528*
-1 ("
-
-194231*
-1 ("
-
-193539*
-1$ (0
-
-193531*
-1$ (0
-
-194034*
-1) (0
-
-193528*
-1$ ((
-
-192931*
-1	 (
-
-193234*
-1	 (
-
-193528*
-1 (
-
-193528*
-1 ( 
-
-194431*
-1 ( 
-
-193539*
-1" (.
-
-193531*
-1" (.
-
-194034*
-1' (.
-
-193528*
-1" (&

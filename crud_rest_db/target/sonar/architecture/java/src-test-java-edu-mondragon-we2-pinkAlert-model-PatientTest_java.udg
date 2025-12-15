@@ -1,428 +1,0 @@
-
-1.0aroacalvo_pbl5-webJavaFrontend"1765797938240*java2.B¦
-E
-@src/test/java/edu/mondragon/we2/pinkAlert/model/PatientTest.java2
-	
-type3
-	
-TEST4
-
-
-module-key5
-
-aroacalvo_pbl5-web6
-
-package8
-9
-4aroacalvo_pbl5-web:edu.mondragon.we2.pinkAlert.model9
-3
--edu.mondragon.we2.pinkAlert.model.PatientTest11
-
-class12
-
-access13
-
-	protected14
-
-
-full-range15
-
-(13:1)-(51:2)16
-
-simple-name17
-
-PatientTest18
-L
-Fedu.mondragon.we2.pinkAlert.model.PatientTest#testGettersAndSetters()V20
-
-method21
-
-(15:5)-(26:6)22
-
-testGettersAndSetters23
- 
-org.junit.jupiter.api.Test25
-
-unknown26
-
-annotated by27
-
-
-uses28
-/
-)edu.mondragon.we2.pinkAlert.model.Patient30
-
-is type31
-
-calls32
-
-
-references33
-K
-Eedu.mondragon.we2.pinkAlert.model.Patient#setId(Ljava/lang/Integer;)V35
-L
-Fedu.mondragon.we2.pinkAlert.model.Patient#setName(Ljava/lang/String;)V37
-T
-Nedu.mondragon.we2.pinkAlert.model.Patient#setBirthDate(Ljava/time/LocalDate;)V39
-&
- org.junit.jupiter.api.Assertions41
-J
-Dorg.junit.jupiter.api.Assertions#assertEquals(ILjava/lang/Integer;)V43
-J
-Dedu.mondragon.we2.pinkAlert.model.Patient#getId()Ljava/lang/Integer;45
-Z
-Torg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Object;Ljava/lang/Object;)V47
-K
-Eedu.mondragon.we2.pinkAlert.model.Patient#getName()Ljava/lang/String;49
-S
-Medu.mondragon.we2.pinkAlert.model.Patient#getBirthDate()Ljava/time/LocalDate;51
-A
-;edu.mondragon.we2.pinkAlert.model.PatientTest#testGetAge()V53
-
-(28:5)-(33:6)54
-
-
-testGetAge55
-8
-2org.junit.jupiter.api.Assertions#assertEquals(II)V57
-9
-3edu.mondragon.we2.pinkAlert.model.Patient#getAge()I59
-T
-Nedu.mondragon.we2.pinkAlert.model.PatientTest#testGetAgeWhenBirthDateIsNull()V61
-
-(35:5)-(40:6)62
-#
-testGetAgeWhenBirthDateIsNull63
-H
-Bedu.mondragon.we2.pinkAlert.model.PatientTest#testDiagnosesList()V65
-
-(42:5)-(50:6)66
-
-testDiagnosesList67
-1
-+edu.mondragon.we2.pinkAlert.model.Diagnosis69
-O
-Iedu.mondragon.we2.pinkAlert.model.Patient#setDiagnoses(Ljava/util/List;)V71
-N
-Hedu.mondragon.we2.pinkAlert.model.Patient#getDiagnoses()Ljava/util/List;73J#
-!
-1
-12
-
-3
-4
-
-5
-6Z
-
-7
-7982
-
-
-5
-6jÌ
-
-38
-383926
-N
-64H
-646521 *
-1+
- +(210:7B$
-
-
-13
-14
-
-
-15
-66
-
-
-17
-67
-
-68
-686926
-
-70
-707126
-
-50
-505126
-
-36
-363726
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-48
-484926
-
-24
-242526
-
-29
-293026
-
-46
-464726
-N
-52H
-525321 *
-1
- (210:7B$
-
-
-13
-14
-
-
-15
-54
-
-
-17
-55
-N
-60H
-606121 *
-1$
- $('210:7B$
-
-
-13
-14
-
-
-15
-62
-
-
-17
-63
-
-56
-565726
-
-40
-404126
-
-58
-585926
-
-42
-424326
-
-44
-444526
-
-34
-343526
-N
-19H
-192021 *
-1
- (210:7B$
-
-
-13
-14
-
-
-15
-22
-
-
-17
-23
-
-72
-727326rÍ
-
-192427*
-1 (
-
-
-192428*
-1 (
-
-
-192931*
-1 (
-
-192928*
-1	 (
-
-192932*
-1 (&
-
-192933*
-1	 (
-
-193432*
-1 (
-
-192933*
-1	 (
-
-193632*
-1 (
-
-192933*
-1	 (
-
-193832*
-1 (
-
-194033*
-1	 (
-
-194232*
-1	 (
-
-192933*
-1 (&
-
-194432*
-1! (&
-
-194033*
-1	 (
-
-194632*
-1	 (
-
-192933*
-1 (.
-
-194832*
-1' (.
-
-194033*
-1	 (
-
-194632*
-1	 (
-
-192933*
-10 (D
-
-195032*
-18 (D
-
-522427*
-1 (
-
-
-522428*
-1 (
-
-
-522931*
-1 (
-
-522928*
-1	 (
-
-522932*
-1 (&
-
-524033*
-1 	  (
-
-525632*
-1 	  (
-
-522933*
-1   ((
-
-525832*
-1 "  ((
-
-602427*
-1# #(
-
-
-602428*
-1# #(
-
-
-602931*
-1% %(
-
-602928*
-1%	 %(
-
-602932*
-1% %(&
-
-604033*
-1'	 '(
-
-605632*
-1'	 '(
-
-602933*
-1' '('
-
-605832*
-1'! '('
-
-642427*
-1* *(
-
-
-642428*
-1* *(
-
-
-642931*
-1, ,(
-
-642928*
-1,	 ,(
-
-642932*
-1, ,(&
-
-646831*
-1. .(
-
-646828*
-1.	 .(
-
-646832*
-1.# .(,
-
-642933*
-1/	 /(
-
-647032*
-1/ /(
-
-644033*
-11	 1(
-
-645632*
-11	 1(
-
-642933*
-11 1(-
-
-647232*
-11! 1(-
