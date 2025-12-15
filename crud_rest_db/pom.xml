@@ -91,6 +91,18 @@
 					</excludes>
 				</configuration>
 			</plugin>
+<plugin>
+    <groupId>org.sonarsource.scanner.maven</groupId>
+    <artifactId>sonar-maven-plugin</artifactId>
+    <version>4.0.0.4121</version>
+    <configuration>
+        <!-- Solo analiza el código fuente -->
+        <sources>src/main/java</sources>
+
+        <!-- Ignora compilados y builds -->
+        <exclusions>**/target/**,**/build/**</exclusions>
+    </configuration>
+</plugin>
 
 			<plugin>
             <groupId>org.jacoco</groupId>
