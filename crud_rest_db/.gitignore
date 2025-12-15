@@ -3,6 +3,8 @@ HELP.md
 # Maven
 target
 !**/target/
+/target/
+
 ### STS ###
 .apt_generated
 .classpath
