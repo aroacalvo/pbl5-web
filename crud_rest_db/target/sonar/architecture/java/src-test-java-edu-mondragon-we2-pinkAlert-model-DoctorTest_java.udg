@@ -1,291 +1,0 @@
-
-1.0aroacalvo_pbl5-webJavaFrontend"1765796173604*java2.Bº
-D
-?src/test/java/edu/mondragon/we2/pinkAlert/model/DoctorTest.java2
-	
-type3
-	
-TEST4
-
-
-module-key5
-
-aroacalvo_pbl5-web6
-
-package8
-9
-4aroacalvo_pbl5-web:edu.mondragon.we2.pinkAlert.model9
-2
-,edu.mondragon.we2.pinkAlert.model.DoctorTest11
-
-class12
-
-access13
-
-	protected14
-
-
-full-range15
-
-(11:1)-(33:2)16
-
-simple-name17
-
-
-DoctorTest18
-K
-Eedu.mondragon.we2.pinkAlert.model.DoctorTest#testGettersAndSetters()V20
-
-method21
-
-(13:5)-(22:6)22
-
-testGettersAndSetters23
- 
-org.junit.jupiter.api.Test25
-
-unknown26
-
-annotated by27
-
-
-uses28
-.
-(edu.mondragon.we2.pinkAlert.model.Doctor30
-
-is type31
-
-calls32
-
-
-references33
-J
-Dedu.mondragon.we2.pinkAlert.model.Doctor#setId(Ljava/lang/Integer;)V35
-K
-Eedu.mondragon.we2.pinkAlert.model.Doctor#setName(Ljava/lang/String;)V37
-&
- org.junit.jupiter.api.Assertions39
-J
-Dorg.junit.jupiter.api.Assertions#assertEquals(ILjava/lang/Integer;)V41
-I
-Cedu.mondragon.we2.pinkAlert.model.Doctor#getId()Ljava/lang/Integer;43
-Z
-Torg.junit.jupiter.api.Assertions#assertEquals(Ljava/lang/Object;Ljava/lang/Object;)V45
-J
-Dedu.mondragon.we2.pinkAlert.model.Doctor#getName()Ljava/lang/String;47
-G
-Aedu.mondragon.we2.pinkAlert.model.DoctorTest#testDiagnosesList()V49
-
-(24:5)-(32:6)50
-
-testDiagnosesList51
-1
-+edu.mondragon.we2.pinkAlert.model.Diagnosis53
-N
-Hedu.mondragon.we2.pinkAlert.model.Doctor#setDiagnoses(Ljava/util/List;)V55
-8
-2org.junit.jupiter.api.Assertions#assertEquals(II)V57
-M
-Gedu.mondragon.we2.pinkAlert.model.Doctor#getDiagnoses()Ljava/util/List;59J#
-!
-1
-12
-
-3
-4
-
-5
-6Z
-
-7
-7982
-
-
-5
-6jð
-
-52
-525326
-N
-19H
-192021 *
-1
- (210:7B$
-
-
-13
-14
-
-
-15
-22
-
-
-17
-23
-
-29
-293026
-
-34
-343526
-
-54
-545526
-
-24
-242526
-
-42
-424326
-
-44
-444526
-
-46
-464726
-
-56
-565726
-J
-10D
-101112 *
-1 (:7B$
-
-
-13
-14
-
-
-15
-16
-
-
-17
-18
-
-38
-383926
-
-40
-404126
-N
-48H
-484921 *
-1
- (210:7B$
-
-
-13
-14
-
-
-15
-50
-
-
-17
-51
-
-58
-585926
-
-36
-363726rÅ
-
-192427*
-1 (
-
-
-192428*
-1 (
-
-
-192931*
-1 (
-
-192928*
-1	 (
-
-192932*
-1 (#
-
-192933*
-1	 (
-
-193432*
-1 (
-
-192933*
-1	 (
-
-193632*
-1 (
-
-193833*
-1	 (
-
-194032*
-1	 (
-
-192933*
-1 (%
-
-194232*
-1  (%
-
-193833*
-1	 (
-
-194432*
-1	 (
-
-192933*
-1" (0
-
-194632*
-1) (0
-
-482427*
-1 (
-
-
-482428*
-1 (
-
-
-482931*
-1 (
-
-482928*
-1	 (
-
-482932*
-1 (#
-
-485231*
-1 (
-
-485228*
-1	 (
-
-485232*
-1# (,
-
-482933*
-1	 (
-
-485432*
-1 (
-
-483833*
-1	 (
-
-485632*
-1	 (
-
-482933*
-1 (,
-
-485832*
-1  (,
