@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientRestController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">crud_rest_db</a> &gt; <a href="index.source.html" class="el_package">edu.mondragon.we2.pinkAlert.controller</a> &gt; <span class="el_source">PatientRestController.java</span></div><h1>PatientRestController.java</h1><pre class="source lang-java linenums">package edu.mondragon.we2.pinkAlert.controller;
+
+import edu.mondragon.we2.pinkAlert.model.Diagnosis;
+import edu.mondragon.we2.pinkAlert.model.Patient;
+import edu.mondragon.we2.pinkAlert.service.DiagnosisService;
+import edu.mondragon.we2.pinkAlert.service.PatientService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/patients&quot;)
+public class PatientRestController {
+
+    private final PatientService patientService;
+    private final DiagnosisService diagnosisService;
+
+    public PatientRestController(PatientService patientService,
+<span class="fc" id="L20">            DiagnosisService diagnosisService) {</span>
+<span class="fc" id="L21">        this.patientService = patientService;</span>
+<span class="fc" id="L22">        this.diagnosisService = diagnosisService;</span>
+<span class="fc" id="L23">    }</span>
+
+    @GetMapping
+    public List&lt;Patient&gt; getAll() {
+<span class="fc" id="L27">        return patientService.findAll();</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public Patient getById(@PathVariable Integer id) {
+<span class="fc" id="L32">        return patientService.findById(id);</span>
+    }
+
+    @PostMapping
+    public ResponseEntity&lt;Patient&gt; create(@RequestBody Patient patient) {
+<span class="fc" id="L37">        Patient created = patientService.create(patient);</span>
+<span class="fc" id="L38">        return ResponseEntity.ok(created);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Patient&gt; update(@PathVariable Integer id,
+            @RequestBody Patient patient) {
+<span class="nc" id="L44">        Patient updated = patientService.update(id, patient);</span>
+<span class="nc" id="L45">        return ResponseEntity.ok(updated);</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;Void&gt; delete(@PathVariable Integer id) {
+<span class="fc" id="L50">        patientService.delete(id);</span>
+<span class="fc" id="L51">        return ResponseEntity.noContent().build();</span>
+    }
+
+    @GetMapping(&quot;/{id}/diagnoses&quot;)
+    public List&lt;Diagnosis&gt; getDiagnosesByPatient(@PathVariable Integer id) {
+<span class="fc" id="L56">        patientService.findById(id);</span>
+<span class="fc" id="L57">        return diagnosisService.findByPatient(id);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

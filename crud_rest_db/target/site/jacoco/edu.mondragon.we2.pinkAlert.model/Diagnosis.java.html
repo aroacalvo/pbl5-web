@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Diagnosis.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">crud_rest_db</a> &gt; <a href="index.source.html" class="el_package">edu.mondragon.we2.pinkAlert.model</a> &gt; <span class="el_source">Diagnosis.java</span></div><h1>Diagnosis.java</h1><pre class="source lang-java linenums">package edu.mondragon.we2.pinkAlert.model;
+
+import jakarta.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = &quot;Diagnosis&quot;)
+public class Diagnosis {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = &quot;DiagnosisID&quot;)
+    private Integer id;
+
+    @Column(name = &quot;ImagePath&quot;, nullable = false, length = 100)
+    private String imagePath;
+
+    @Column(name = &quot;Date&quot;, nullable = false)
+    private LocalDate date;
+
+    @Column(name = &quot;Description&quot;, nullable = false, length = 255)
+    private String description;
+
+    @Column(name = &quot;Urgent&quot;, nullable = false)
+    private boolean urgent;
+
+    @Column(name = &quot;Reviewed&quot;, nullable = false)
+    private boolean reviewed;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = &quot;DoctorID&quot;, nullable = false)
+    private Doctor doctor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = &quot;PatientID&quot;, nullable = false)
+    private Patient patient;
+
+<span class="fc" id="L38">    public Diagnosis() {</span>
+<span class="fc" id="L39">    }</span>
+
+    public Diagnosis(String imagePath, LocalDate date, String description,
+<span class="nc" id="L42">            boolean urgent, Doctor doctor, Patient patient) {</span>
+<span class="nc" id="L43">        this.imagePath = imagePath;</span>
+<span class="nc" id="L44">        this.date = date;</span>
+<span class="nc" id="L45">        this.description = description;</span>
+<span class="nc" id="L46">        this.urgent = urgent;</span>
+<span class="nc" id="L47">        this.doctor = doctor;</span>
+<span class="nc" id="L48">        this.patient = patient;</span>
+<span class="nc" id="L49">    }</span>
+
+    // Getters &amp; setters
+    public Integer getId() {
+<span class="fc" id="L53">        return id;</span>
+    }
+
+    public void setId(Integer id) {
+<span class="fc" id="L57">        this.id = id;</span>
+<span class="fc" id="L58">    }</span>
+
+    public String getImagePath() {
+<span class="fc" id="L61">        return imagePath;</span>
+    }
+
+    public void setImagePath(String imagePath) {
+<span class="fc" id="L65">        this.imagePath = imagePath;</span>
+<span class="fc" id="L66">    }</span>
+
+    public LocalDate getDate() {
+<span class="fc" id="L69">        return date;</span>
+    }
+
+    public void setDate(LocalDate date) {
+<span class="fc" id="L73">        this.date = date;</span>
+<span class="fc" id="L74">    }</span>
+
+    public String getDescription() {
+<span class="fc" id="L77">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="fc" id="L81">        this.description = description;</span>
+<span class="fc" id="L82">    }</span>
+
+    public boolean isUrgent() {
+<span class="fc" id="L85">        return urgent;</span>
+    }
+
+    public void setUrgent(boolean urgent) {
+<span class="fc" id="L89">        this.urgent = urgent;</span>
+<span class="fc" id="L90">    }</span>
+
+    public Doctor getDoctor() {
+<span class="fc" id="L93">        return doctor;</span>
+    }
+
+    public void setDoctor(Doctor doctor) {
+<span class="fc" id="L97">        this.doctor = doctor;</span>
+<span class="fc" id="L98">    }</span>
+
+    public Patient getPatient() {
+<span class="fc" id="L101">        return patient;</span>
+    }
+
+    public void setPatient(Patient patient) {
+<span class="fc" id="L105">        this.patient = patient;</span>
+<span class="fc" id="L106">    }</span>
+
+    public boolean isReviewed() {
+<span class="fc" id="L109">        return reviewed;</span>
+    }
+
+    public void setReviewed(boolean reviewed) {
+<span class="fc" id="L113">        this.reviewed = reviewed;</span>
+<span class="fc" id="L114">    }</span>
+
+    @Transient
+    public String getStatus() {
+        // Simple example; you can refine it
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        if (description != null) {</span>
+<span class="fc" id="L120">            String lower = description.toLowerCase();</span>
+<span class="pc bpc" id="L121" title="1 of 4 branches missed.">            if (lower.contains(&quot;false positive&quot;) || lower.contains(&quot;negative&quot;)) {</span>
+<span class="fc" id="L122">                return &quot;Negative&quot;;</span>
+            }
+<span class="pc bpc" id="L124" title="1 of 4 branches missed.">            if (lower.contains(&quot;cancer&quot;) || lower.contains(&quot;grade&quot;)) {</span>
+<span class="fc" id="L125">                return &quot;Positive&quot;;</span>
+            }
+        }
+<span class="fc" id="L128">        return &quot;Pending&quot;;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

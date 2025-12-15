@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DoctorController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">crud_rest_db</a> &gt; <a href="index.source.html" class="el_package">edu.mondragon.we2.pinkAlert.controller</a> &gt; <span class="el_source">DoctorController.java</span></div><h1>DoctorController.java</h1><pre class="source lang-java linenums">package edu.mondragon.we2.pinkAlert.controller;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+
+import edu.mondragon.we2.pinkAlert.service.DiagnosisService;
+import edu.mondragon.we2.pinkAlert.model.Diagnosis;
+
+@Controller
+@RequestMapping(&quot;/doctor&quot;)
+public class DoctorController {
+
+    private final DiagnosisService diagnosisService;
+
+<span class="fc" id="L27">    public DoctorController(DiagnosisService diagnosisService) {</span>
+<span class="fc" id="L28">        this.diagnosisService = diagnosisService;</span>
+<span class="fc" id="L29">    }</span>
+
+    @GetMapping(&quot;/dashboard&quot;)
+    public String dashboard(
+            @RequestParam(value = &quot;date&quot;, required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate selectedDate,
+            Model model) {
+
+<span class="fc" id="L36">        LocalDate today = LocalDate.now();</span>
+
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        if (selectedDate == null) {</span>
+<span class="fc" id="L39">            selectedDate = today;</span>
+        }
+
+        // FIX for lambda: final copy
+<span class="fc" id="L43">        final LocalDate finalSelectedDate = selectedDate;</span>
+
+        // 1) Fetch ONLY diagnoses for the selected date
+<span class="fc" id="L46">        List&lt;Diagnosis&gt; diagnoses = diagnosisService.findByDateSortedByUrgency(finalSelectedDate);</span>
+
+<span class="fc" id="L48">        int total = diagnoses.size();</span>
+<span class="fc" id="L49">        long urgent = diagnoses.stream().filter(Diagnosis::isUrgent).count();</span>
+<span class="fc" id="L50">        long routine = total - urgent;</span>
+
+        // Count previous screenings per patient
+<span class="fc" id="L53">        Map&lt;Integer, Long&gt; previousScreenings = diagnoses.stream()</span>
+<span class="fc" id="L54">                .collect(Collectors.groupingBy(</span>
+<span class="fc" id="L55">                        d -&gt; d.getPatient().getId(),</span>
+<span class="fc" id="L56">                        Collectors.counting()));</span>
+
+<span class="fc" id="L58">        model.addAttribute(&quot;diagnoses&quot;, diagnoses);</span>
+<span class="fc" id="L59">        model.addAttribute(&quot;totalCount&quot;, total);</span>
+<span class="fc" id="L60">        model.addAttribute(&quot;urgentCount&quot;, urgent);</span>
+<span class="fc" id="L61">        model.addAttribute(&quot;routineCount&quot;, routine);</span>
+<span class="fc" id="L62">        model.addAttribute(&quot;previousScreenings&quot;, previousScreenings);</span>
+<span class="fc" id="L63">        model.addAttribute(&quot;selectedDate&quot;, finalSelectedDate);</span>
+
+        // -----------------------------------------
+        // DYNAMIC DATE PILLS (last 5 days + today)
+        // -----------------------------------------
+
+<span class="fc" id="L69">        DateTimeFormatter monthDayFmt = DateTimeFormatter.ofPattern(&quot;MMM dd&quot;);</span>
+<span class="fc" id="L70">        DateTimeFormatter displayFmt = DateTimeFormatter.ofPattern(&quot;MM/dd/yyyy&quot;);</span>
+
+<span class="fc" id="L72">        List&lt;DatePill&gt; datePills = IntStream.rangeClosed(0, 5)</span>
+<span class="fc" id="L73">                .mapToObj(offset -&gt; {</span>
+<span class="fc" id="L74">                    LocalDate date = today.minusDays(5 - offset);</span>
+
+<span class="fc" id="L76">                    long daysDiff = ChronoUnit.DAYS.between(date, today);</span>
+
+                    String label;
+<span class="fc bfc" id="L79" title="All 2 branches covered.">                    if (daysDiff == 0)</span>
+<span class="fc" id="L80">                        label = &quot;Today&quot;;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">                    else if (daysDiff == 1)</span>
+<span class="fc" id="L82">                        label = &quot;Yesterday&quot;;</span>
+                    else
+<span class="fc" id="L84">                        label = date.format(monthDayFmt);</span>
+
+<span class="fc" id="L86">                    String display = date.format(displayFmt);</span>
+<span class="fc" id="L87">                    String param = date.toString(); // yyyy-MM-dd for URL</span>
+
+<span class="fc" id="L89">                    boolean active = date.equals(finalSelectedDate);</span>
+
+<span class="fc" id="L91">                    return new DatePill(label, display, param, active);</span>
+                })
+<span class="fc" id="L93">                .collect(Collectors.toList());</span>
+
+<span class="fc" id="L95">        model.addAttribute(&quot;datePills&quot;, datePills);</span>
+
+<span class="fc" id="L97">        return &quot;doctor-dashboard&quot;;</span>
+    }
+
+    // Helper DTO for date buttons
+    public static class DatePill {
+        private final String label;
+        private final String display;
+        private final String param;
+        private final boolean active;
+
+<span class="fc" id="L107">        public DatePill(String label, String display, String param, boolean active) {</span>
+<span class="fc" id="L108">            this.label = label;</span>
+<span class="fc" id="L109">            this.display = display;</span>
+<span class="fc" id="L110">            this.param = param;</span>
+<span class="fc" id="L111">            this.active = active;</span>
+<span class="fc" id="L112">        }</span>
+
+        public String getLabel() {
+<span class="nc" id="L115">            return label;</span>
+        }
+
+        public String getDisplay() {
+<span class="nc" id="L119">            return display;</span>
+        }
+
+        public String getParam() {
+<span class="nc" id="L123">            return param;</span>
+        }
+
+        public boolean isActive() {
+<span class="nc" id="L127">            return active;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
