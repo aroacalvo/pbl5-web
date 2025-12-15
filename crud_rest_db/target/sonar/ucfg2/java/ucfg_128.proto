@@ -1,0 +1,107 @@
+
+Iedu.mondragon.we2.pinkAlert.model.Diagnosis#getStatus()Ljava/lang/String;†
+|C:/Users/aritx/OneDrive/Desktop/Uni/PBL/pbl5-web/crud_rest_db/src/main/java/edu/mondragon/we2/pinkAlert/model/Diagnosis.javau u("8*'
+2} }(!"
+} }("
+
+Positive*î
+3|, |(1ÖÓ
+|, |(C
+%7boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*7
+
+__unknown_file (
+
+lowerjava.lang.String*%
+
+__unknown_file (	
+grade2"contains(Ljava/lang/CharSequence;)*
+2
+1*ï
+4| |(×Ô
+| |((
+%6boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*7
+
+__unknown_file (
+
+lowerjava.lang.String*&
+
+__unknown_file (
+
+cancer2"contains(Ljava/lang/CharSequence;)*
+2
+3*'
+5z z(!"
+z z("
+
+Negative*ñ
+6y4 y(9ÙÖ
+y4 y(N
+%5boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*7
+
+__unknown_file (
+
+lowerjava.lang.String*(
+
+__unknown_file (
+
+negative2"contains(Ljava/lang/CharSequence;)*
+4
+5*‡
+7x x(&‰
+†
+x x(&
+%2java.lang.String"__id*\
+
+__unknown_file (@*>-
++edu.mondragon.we2.pinkAlert.model.Diagnosis"
+descriptionœ™
+x x(4
+%3java.lang.String"0java.lang.String#toLowerCase()Ljava/lang/String;*4
+
+__unknown_file (
+
+%2java.lang.String2toLowerCase()c
+a
+x x(5
+lowerjava.lang.String"__id*4
+
+__unknown_file (
+
+%3java.lang.StringßÜ
+y y(0
+%4boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*7
+
+__unknown_file (
+
+lowerjava.lang.String*.
+
+__unknown_file (
+false positive2"contains(Ljava/lang/CharSequence;)*
+5
+6*—
+8w w(‰
+†
+w w(
+%0java.lang.String"__id*\
+
+__unknown_file (@*>-
++edu.mondragon.we2.pinkAlert.model.Diagnosis"
+descriptiont
+r
+w w(
+%1boolean"	__compare*
+w w(
+!=*$
+w w(
+
+%0java.lang.String*
+w w(
+""*
+7
+1**
+1
+€ €("
+
+€ €(	
+PendingB/-
++edu.mondragon.we2.pinkAlert.model.DiagnosisH
