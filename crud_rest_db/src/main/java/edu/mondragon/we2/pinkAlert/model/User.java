@@ -24,11 +24,11 @@ public class User {
     @Column(name = "Role", nullable = false, length = 20)
     private Role role;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DoctorID")
     private Doctor doctor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PatientID")
     private Patient patient;
 

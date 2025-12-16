@@ -26,7 +26,7 @@
                 </div> -->
 
                 <h3 class="login-title">Login</h3>
-                <p class="login-subtitle">Access your medical review portal</p>
+                <!-- <p class="login-subtitle">Access your medical review portal</p> -->
 
                 <!-- Error message -->
                 <c:if test="${not empty error}">

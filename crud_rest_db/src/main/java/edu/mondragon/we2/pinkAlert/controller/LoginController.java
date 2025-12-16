@@ -1,40 +1,54 @@
 package edu.mondragon.we2.pinkAlert.controller;
 
+import edu.mondragon.we2.pinkAlert.model.Role;
+import edu.mondragon.we2.pinkAlert.model.User;
+import edu.mondragon.we2.pinkAlert.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @Controller
 public class LoginController {
 
-    // Show login page for "/" and "/login"
-    @GetMapping({ "/", "/login" })
-    public String showLoginPage() {
-        return "login"; // -> /WEB-INF/jsp/login.jsp (see step 3)
+    private final UserService userService;
+
+    public LoginController(UserService userService) {
+        this.userService = userService;
     }
 
-    // Handle login POST
+    @GetMapping({ "/", "/login" })
+    public String showLoginPage() {
+        return "login";
+    }
+
     @PostMapping("/login")
     public String processLogin(
-            @RequestParam("username") String username,
+            @RequestParam("username") String identifier,
             @RequestParam("password") String password,
-            Model model) {
+            Model model,
+            HttpServletRequest request) {
 
-        // Dummy login logic – replace with real auth later
-        if (username.equals("doctor") && password.equals("123")) {
+        Optional<User> opt = userService.findByIdentifier(identifier);
+        System.out.println("LOGIN identifier=" + identifier);
+        System.out.println("USER found? " + opt.isPresent());
+        opt.ifPresent(u -> System.out.println("ROLE=" + u.getRole() + " hash=" + u.getPasswordHash()));
+
+        if (opt.isEmpty() || !userService.matches(opt.get(), password)) {
+            model.addAttribute("error", "Invalid username/email or password.");
+            return "login";
+        }
+
+        User user = opt.get();
+        request.getSession().setAttribute("loggedUser", user);
+
+        if (user.getRole() == Role.DOCTOR)
             return "redirect:/doctor/dashboard";
-        }
-        if (username.equals("patient") && password.equals("123")) {
+        if (user.getRole() == Role.PATIENT)
             return "redirect:/patient/portal";
-        }
-        if (username.equals("admin") && password.equals("123")) {
-            return "redirect:/admin/dashboard";
-        }
-
-        // If invalid → show login page again with error
-        model.addAttribute("error", "Invalid username or password.");
-        return "login";
+        return "redirect:/admin/dashboard";
     }
 }
