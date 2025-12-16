@@ -16,4 +16,7 @@ public interface DiagnosisRepository extends JpaRepository<Diagnosis, Integer> {
 
     List<Diagnosis> findByDateOrderByUrgentDesc(LocalDate date);
 
+    long countByUrgentTrue();
+
+    long countByReviewedTrue();
 }

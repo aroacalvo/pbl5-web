@@ -39,7 +39,8 @@ public class DiagnosisService {
     }
 
     public Diagnosis findById(Integer id) {
-        return diagnosisRepository.findById(id).orElseThrow(() -> new RuntimeException("Diagnosis not found with id " + id));
+        return diagnosisRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Diagnosis not found with id " + id));
     }
 
     public Diagnosis create(Diagnosis diagnosis, Integer doctorId, Integer patientId) {
@@ -98,6 +99,4 @@ public class DiagnosisService {
 
         return diagnosisRepository.save(diagnosis);
     }
-
-    
 }
